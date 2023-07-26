@@ -22,11 +22,28 @@ function App() {
     })
   }
 
+  function removeTask(indexToRemove) {
+    setTasks(prev => {
+      return prev.filter((taskObject,index) =>  index !== indexToRemove );
+    });
+  }
+
+  function updateTaskDone(taskIndex, newDone) {
+    setTasks(prev => {
+      const newTasks = [...prev];
+      newTasks[taskIndex].done = newDone;
+      return newTasks
+    });
+  }
+
   return (
    <main>
+      <h1> To Do</h1>
      <TaskForm onAdd = {addTask}/>
-     {tasks.map(task => (
-      <Task {...task} />
+     {tasks.map((task, index) => (
+      <Task {...task} 
+            onToggle = {done => updateTaskDone(index, done)}
+            onTrash = {() => removeTask(index)}/>
      ))}
    </main>
   );

@@ -1,6 +1,6 @@
 body {
   background-color: #17181f;
-  color: #aaa;
+  color: #ddd;
 }
 
 * {
@@ -10,6 +10,10 @@ body {
 main {
   max-width: 300px;
   margin: 20px auto ;
+}
+
+h1 {
+  padding-left: 35%;
 }
 
 form {
@@ -42,9 +46,57 @@ div.task {
   padding: 5px 9px;
   margin-top: 5px;
   display: flex;
+  align-items: center;
+  transition: opacity .3s linear;
 }
 
 div.task svg {
   height: 20px;
-  margin-right: 4px;
+  margin-right: 6px;
+  fill: #61dafb;
 }
+
+div.task.done {
+  opacity: 0.3;
+}
+
+div.task-name {
+  flex-grow: 1;
+}
+
+div.task span {
+  position: relative;
+}
+
+div.task span::before {
+  content:'';
+  display: block;
+  width: 0;
+  height: 1px;
+  background-color: #ddd;
+  position: absolute;
+  top: 10px;
+  transition: width .1s linear;
+}
+
+div.task.done span::before {
+  width: 100%;
+}
+
+div.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+button.trash {
+  background: none;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+
+button.trash svg {
+  fill: #888;
+  height: 14px;
+}
+
